@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>FriendlyARM一线协议 | hacking Pi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="主板和LCD驱动板通过一线协议通讯, 实现电阻触摸, 背光控制和识别型号等功能. 读写 host发命令给client，格式为8bit cmd + 8bit crc。 client返回16bit data + 8bit crc。  命令12#define REQ_TS            0x40U      &#x2F;&#x2F; 获取触摸ADC值#define REQ_INFO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FriendlyARM一线协议">
+<meta property="og:url" content="https://hackingpi.github.io/2020/04/18/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="hacking Pi">
+<meta property="og:description" content="主板和LCD驱动板通过一线协议通讯, 实现电阻触摸, 背光控制和识别型号等功能. 读写 host发命令给client，格式为8bit cmd + 8bit crc。 client返回16bit data + 8bit crc。  命令12#define REQ_TS            0x40U      &#x2F;&#x2F; 获取触摸ADC值#define REQ_INFO">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-18T10:06:13.862Z">
+<meta property="article:modified_time" content="2020-04-18T10:42:26.828Z">
+<meta property="article:author" content="WingonChen">
+<meta property="article:tag" content="Maker">
+<meta property="article:tag" content="electronic">
+<meta property="article:tag" content="technology">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hacking Pi" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hacking Pi</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hackingpi.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-FriendlyARM一线协议" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/18/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/" class="article-date">
+  <time datetime="2020-04-18T10:06:13.862Z" itemprop="datePublished">2020-04-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      FriendlyARM一线协议
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>主板和LCD驱动板通过一线协议通讯, 实现电阻触摸, 背光控制和识别型号等功能.</p>
+<h4 id="读写"><a href="#读写" class="headerlink" title="读写"></a>读写</h4><ul>
+<li>host发命令给client，格式为8bit cmd + 8bit crc。</li>
+<li>client返回16bit data + 8bit crc。</li>
+</ul>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define REQ_TS            0x40U      &#x2F;&#x2F; 获取触摸ADC值</span><br><span class="line">#define REQ_INFO          0x60U      &#x2F;&#x2F; 获取固件版本信息</span><br></pre></td></tr></table></figure>
+<ul>
+<li>发送0x80~0xff给client，直接设置背光。</li>
+</ul>
+<h4 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h4><ul>
+<li>旧版本协议使用一根GPIO。</li>
+<li>新版本使用一路I2C和一根GPIO。</li>
+</ul>
+<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;driver&#x2F;one-wire-info   &#x2F;&#x2F; 输出LCD_TYPE, 固件版本，请求计数，通讯错误计数</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hackingpi.github.io/2020/04/18/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/" data-id="ck95ipayr00002gl03stn7ewa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/18/%E4%BC%B0%E8%AE%A1%E4%BF%A1%E5%8F%B7%E5%AE%8C%E6%95%B4%E6%80%A7%E6%95%88%E5%BA%94%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%B3%95%E5%88%99/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          估计信号完整性效应的经验法则
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/18/%E4%BC%B0%E8%AE%A1%E4%BF%A1%E5%8F%B7%E5%AE%8C%E6%95%B4%E6%80%A7%E6%95%88%E5%BA%94%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%B3%95%E5%88%99/">估计信号完整性效应的经验法则</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/18/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/">FriendlyARM一线协议</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 WingonChen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
