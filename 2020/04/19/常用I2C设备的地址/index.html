@@ -5,17 +5,17 @@
   
 
   
-  <title>FriendlyARM一线协议 | Hacking Pi</title>
+  <title>常用I2C设备的地址 | Hacking Pi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主板和LCD驱动板通过一线协议通讯, 实现电阻触摸, 背光控制和识别型号等功能.">
+  <meta name="description" content="避免同一总线上地址冲突, 持续更新。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FriendlyARM一线协议">
-<meta property="og:url" content="https://hackingpi.com/2020/04/18/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:title" content="常用I2C设备的地址">
+<meta property="og:url" content="https://hackingpi.com/2020/04/19/%E5%B8%B8%E7%94%A8I2C%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9C%B0%E5%9D%80/index.html">
 <meta property="og:site_name" content="Hacking Pi">
-<meta property="og:description" content="主板和LCD驱动板通过一线协议通讯, 实现电阻触摸, 背光控制和识别型号等功能.">
+<meta property="og:description" content="避免同一总线上地址冲突, 持续更新。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-18T10:06:13.862Z">
-<meta property="article:modified_time" content="2020-04-18T16:46:57.599Z">
+<meta property="article:published_time" content="2020-04-18T16:52:16.133Z">
+<meta property="article:modified_time" content="2020-04-18T17:07:35.109Z">
 <meta property="article:author" content="chyA">
 <meta property="article:tag" content="Maker">
 <meta property="article:tag" content="electronic">
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-FriendlyARM一线协议" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-常用I2C设备的地址" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/04/18/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/" class="article-date">
-  <time datetime="2020-04-18T10:06:13.862Z" itemprop="datePublished">2020-04-18</time>
+    <a href="/2020/04/19/%E5%B8%B8%E7%94%A8I2C%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9C%B0%E5%9D%80/" class="article-date">
+  <time datetime="2020-04-18T16:52:16.133Z" itemprop="datePublished">2020-04-19</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      FriendlyARM一线协议
+      常用I2C设备的地址
     </h1>
   
 
@@ -87,29 +87,68 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>主板和LCD驱动板通过一线协议通讯, 实现电阻触摸, 背光控制和识别型号等功能.</p>
+        <p>避免同一总线上地址冲突, 持续更新。</p>
 <a id="more"></a>
 
-<h4 id="读写"><a href="#读写" class="headerlink" title="读写"></a>读写</h4><ul>
-<li>host发命令给client，格式为8bit cmd + 8bit crc。</li>
-<li>client返回16bit data + 8bit crc。</li>
-</ul>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define REQ_TS            0x40U      &#x2F;&#x2F; 获取触摸ADC值</span><br><span class="line">#define REQ_INFO          0x60U      &#x2F;&#x2F; 获取固件版本信息</span><br></pre></td></tr></table></figure></li>
-<li>发送0x80~0xff给client，直接设置背光。</li>
-</ul>
-<h4 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h4><ul>
-<li>旧版本协议使用一根GPIO。</li>
-<li>新版本使用一路I2C和一根GPIO。</li>
-</ul>
-<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;driver&#x2F;one-wire-info   &#x2F;&#x2F; 输出LCD_TYPE, 固件版本，请求计数，通讯错误计数</span><br></pre></td></tr></table></figure></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>名称</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PCA9536</td>
+<td>4bits I2C GPIO</td>
+<td>0x82/0x83</td>
+</tr>
+<tr>
+<td>OV5640</td>
+<td>OV CMOS Sensor</td>
+<td>0x60/0x61</td>
+</tr>
+<tr>
+<td>OV8825</td>
+<td>OV CMOS Sensor</td>
+<td>0x6C/0x6D</td>
+</tr>
+<tr>
+<td>ES8316</td>
+<td>audio codec</td>
+<td>0x22/0x23</td>
+</tr>
+<tr>
+<td>BU9873</td>
+<td>RTC</td>
+<td>0x64/0x65</td>
+</tr>
+<tr>
+<td>24AA025E48</td>
+<td>Serial EEPROMs with EUI-48™ Node Identity</td>
+<td>0xA0/0xA1</td>
+</tr>
+<tr>
+<td>EEPROM</td>
+<td>Standard EEPROM</td>
+<td>0xA0~0xAF</td>
+</tr>
+<tr>
+<td>ATSHA204A</td>
+<td>Secure authentication and validation device</td>
+<td>0xC8/0xC9</td>
+</tr>
+<tr>
+<td>PCF8591</td>
+<td>8-bit A/D and D/A converter</td>
+<td>0x90~0x9F</td>
+</tr>
+</tbody></table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hackingpi.com/2020/04/18/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/" data-id="ck95wd5jf0000xol03ukz98pg" class="article-share-link">Share</a>
+      <a data-url="https://hackingpi.com/2020/04/19/%E5%B8%B8%E7%94%A8I2C%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9C%B0%E5%9D%80/" data-id="ck95wd5jp0004xol0cgli4qbo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -118,15 +157,20 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/04/18/%E4%BC%B0%E8%AE%A1%E4%BF%A1%E5%8F%B7%E5%AE%8C%E6%95%B4%E6%80%A7%E6%95%88%E5%BA%94%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%B3%95%E5%88%99/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/19/%E9%93%9C%E7%AE%94%E5%8E%9A%E5%BA%A6%E5%92%8C%E7%BA%BF%E5%AE%BD%E4%B8%8E%E6%9C%80%E5%A4%A7%E8%B4%9F%E8%BD%BD%E7%94%B5%E6%B5%81%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          估计信号完整性效应的经验法则
+          铜箔厚度和线宽与最大负载电流之间的关系
         
       </div>
     </a>
   
+  
+    <a href="/2020/04/19/%E5%9C%A8ARM%E6%9D%BF%E4%B8%8A%E4%BD%BF%E7%94%A8OpenOCD%E7%83%A7%E5%86%99STM32%E5%8D%95%E7%89%87%E6%9C%BA%E5%9B%BA%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在ARM板上使用OpenOCD烧写STM32单片机固件</div>
+    </a>
   
 </nav>
 

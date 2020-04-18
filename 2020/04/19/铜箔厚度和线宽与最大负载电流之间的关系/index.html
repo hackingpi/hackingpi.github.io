@@ -5,22 +5,24 @@
   
 
   
-  <title>FriendlyARM一线协议 | Hacking Pi</title>
+  <title>铜箔厚度和线宽与最大负载电流之间的关系 | Hacking Pi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主板和LCD驱动板通过一线协议通讯, 实现电阻触摸, 背光控制和识别型号等功能.">
+  <meta name="description" content="相同温升，铜越厚、走线越宽，最大负载电流越大。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FriendlyARM一线协议">
-<meta property="og:url" content="https://hackingpi.com/2020/04/18/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:title" content="铜箔厚度和线宽与最大负载电流之间的关系">
+<meta property="og:url" content="https://hackingpi.com/2020/04/19/%E9%93%9C%E7%AE%94%E5%8E%9A%E5%BA%A6%E5%92%8C%E7%BA%BF%E5%AE%BD%E4%B8%8E%E6%9C%80%E5%A4%A7%E8%B4%9F%E8%BD%BD%E7%94%B5%E6%B5%81%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/index.html">
 <meta property="og:site_name" content="Hacking Pi">
-<meta property="og:description" content="主板和LCD驱动板通过一线协议通讯, 实现电阻触摸, 背光控制和识别型号等功能.">
+<meta property="og:description" content="相同温升，铜越厚、走线越宽，最大负载电流越大。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-18T10:06:13.862Z">
-<meta property="article:modified_time" content="2020-04-18T16:46:57.599Z">
+<meta property="og:image" content="https://hackingpi.com/images/trace_carrying_capacity.png">
+<meta property="article:published_time" content="2020-04-18T17:09:45.050Z">
+<meta property="article:modified_time" content="2020-04-18T17:46:21.995Z">
 <meta property="article:author" content="chyA">
 <meta property="article:tag" content="Maker">
 <meta property="article:tag" content="electronic">
 <meta property="article:tag" content="technology">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hackingpi.com/images/trace_carrying_capacity.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -65,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-FriendlyARM一线协议" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-铜箔厚度和线宽与最大负载电流之间的关系" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/04/18/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/" class="article-date">
-  <time datetime="2020-04-18T10:06:13.862Z" itemprop="datePublished">2020-04-18</time>
+    <a href="/2020/04/19/%E9%93%9C%E7%AE%94%E5%8E%9A%E5%BA%A6%E5%92%8C%E7%BA%BF%E5%AE%BD%E4%B8%8E%E6%9C%80%E5%A4%A7%E8%B4%9F%E8%BD%BD%E7%94%B5%E6%B5%81%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/" class="article-date">
+  <time datetime="2020-04-18T17:09:45.050Z" itemprop="datePublished">2020-04-19</time>
 </a>
     
   </div>
@@ -79,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      FriendlyARM一线协议
+      铜箔厚度和线宽与最大负载电流之间的关系
     </h1>
   
 
@@ -87,29 +89,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>主板和LCD驱动板通过一线协议通讯, 实现电阻触摸, 背光控制和识别型号等功能.</p>
+        <p>相同温升，铜越厚、走线越宽，最大负载电流越大。</p>
 <a id="more"></a>
 
-<h4 id="读写"><a href="#读写" class="headerlink" title="读写"></a>读写</h4><ul>
-<li>host发命令给client，格式为8bit cmd + 8bit crc。</li>
-<li>client返回16bit data + 8bit crc。</li>
+<h4 id="铜箔厚度"><a href="#铜箔厚度" class="headerlink" title="铜箔厚度"></a>铜箔厚度</h4><p> 0.5 盎司(hoz) = 0.0007 英吋(inch) = 0.7 mils = 0.018 毫米(mm)<br> 1.0 盎司(1oz) = 0.0014 英吋(inch) = 1.4 mils = 0.035 毫米(mm)<br> 2.0 盎司(2oz) = 0.0034 英吋(inch) = 2.8 mils = 0.070 毫米(mm)</p>
+<h4 id="铜箔厚度、线宽与最大负载电流之间的关系"><a href="#铜箔厚度、线宽与最大负载电流之间的关系" class="headerlink" title="铜箔厚度、线宽与最大负载电流之间的关系"></a>铜箔厚度、线宽与最大负载电流之间的关系</h4><ul>
+<li>KiCAD中有一个计算工具</li>
+<li>MIL-STD-275 Printed Wiring for Electronic Equipment中给出的数据<br><img src="/images/trace_carrying_capacity.png" alt=""></li>
 </ul>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define REQ_TS            0x40U      &#x2F;&#x2F; 获取触摸ADC值</span><br><span class="line">#define REQ_INFO          0x60U      &#x2F;&#x2F; 获取固件版本信息</span><br></pre></td></tr></table></figure></li>
-<li>发送0x80~0xff给client，直接设置背光。</li>
-</ul>
-<h4 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h4><ul>
-<li>旧版本协议使用一根GPIO。</li>
-<li>新版本使用一路I2C和一根GPIO。</li>
-</ul>
-<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;driver&#x2F;one-wire-info   &#x2F;&#x2F; 输出LCD_TYPE, 固件版本，请求计数，通讯错误计数</span><br></pre></td></tr></table></figure></li>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="http://www.researchmfg.com/2013/01/pcb-current-carrying-capacity/" target="_blank" rel="noopener">http://www.researchmfg.com/2013/01/pcb-current-carrying-capacity/</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hackingpi.com/2020/04/18/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/" data-id="ck95wd5jf0000xol03ukz98pg" class="article-share-link">Share</a>
+      <a data-url="https://hackingpi.com/2020/04/19/%E9%93%9C%E7%AE%94%E5%8E%9A%E5%BA%A6%E5%92%8C%E7%BA%BF%E5%AE%BD%E4%B8%8E%E6%9C%80%E5%A4%A7%E8%B4%9F%E8%BD%BD%E7%94%B5%E6%B5%81%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/" data-id="ck95wrx850000t0l034iiasc2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -118,15 +113,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/04/18/%E4%BC%B0%E8%AE%A1%E4%BF%A1%E5%8F%B7%E5%AE%8C%E6%95%B4%E6%80%A7%E6%95%88%E5%BA%94%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%B3%95%E5%88%99/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          估计信号完整性效应的经验法则
-        
-      </div>
-    </a>
   
+    <a href="/2020/04/19/%E5%B8%B8%E7%94%A8I2C%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9C%B0%E5%9D%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">常用I2C设备的地址</div>
+    </a>
   
 </nav>
 

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Linux下CC Tool的安装和使用方法 | Hacking Pi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="cc-tool是linux下调试和烧写TI CC2530芯片的工具。下面介绍它的安装和使用方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下CC Tool的安装和使用方法">
+<meta property="og:url" content="https://hackingpi.com/2020/04/18/Linux%E4%B8%8BCC%20Tool%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hacking Pi">
+<meta property="og:description" content="cc-tool是linux下调试和烧写TI CC2530芯片的工具。下面介绍它的安装和使用方法。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-18T15:47:39.818Z">
+<meta property="article:modified_time" content="2020-04-18T16:47:14.416Z">
+<meta property="article:author" content="chyA">
+<meta property="article:tag" content="Maker">
+<meta property="article:tag" content="electronic">
+<meta property="article:tag" content="technology">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hacking Pi</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hackingpi.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux下CC Tool的安装和使用方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/18/Linux%E4%B8%8BCC%20Tool%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" class="article-date">
+  <time datetime="2020-04-18T15:47:39.818Z" itemprop="datePublished">2020-04-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux下CC Tool的安装和使用方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>cc-tool是linux下调试和烧写TI CC2530芯片的工具。下面介绍它的安装和使用方法。</p>
+<a id="more"></a>
+
+<h4 id="安装必要的库文件"><a href="#安装必要的库文件" class="headerlink" title="安装必要的库文件"></a>安装必要的库文件</h4><ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libusb-1.0-0-dev libboost-all-dev</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="编译-安装"><a href="#编译-安装" class="headerlink" title="编译, 安装"></a>编译, 安装</h4><ol>
+<li>打开这个网页下载源代码：<a href="https://sourceforge.net/projects/cctool/files/" target="_blank" rel="noopener">https://sourceforge.net/projects/cctool/files/</a></li>
+<li>解压编译源代码（如果下载了不同的版本，不要忘记修改相应的文件名），<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf cc-tool-0.26-src.tgz        </span><br><span class="line"><span class="built_in">cd</span> cc-tool</span><br></pre></td></tr></table></figure></li>
+<li>修改, src/programmer/cc_programmer.cpp, 中<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USB_SET_CHIP_INFO, <span class="number">1</span>, <span class="number">1</span>, &amp;command[<span class="number">0</span>], command.<span class="built_in">size</span>());</span><br></pre></td></tr></table></figure>
+为<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USB_SET_CHIP_INFO, <span class="number">1</span>, <span class="number">0</span>, &amp;command[<span class="number">0</span>], command.<span class="built_in">size</span>());</span><br></pre></td></tr></table></figure></li>
+<li>然后执行，<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="下载固件"><a href="#下载固件" class="headerlink" title="下载固件"></a>下载固件</h4><ol>
+<li>把CCDebuger插入电脑, 如果是虚拟机, 这把相应的USB设备连接到虚拟机(断开与主机的连接)</li>
+<li>执行以下命令，确认CCDebuger和CC2530是否被正确识别<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cc-tool -t</span><br></pre></td></tr></table></figure></li>
+<li>如果一切正常,  执行命令烧写固件: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cc-tool -ew hello-world.hex</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hackingpi.com/2020/04/18/Linux%E4%B8%8BCC%20Tool%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="ck95wd5jm0001xol0bcg0fmyi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/19/%E5%9C%A8ARM%E6%9D%BF%E4%B8%8A%E4%BD%BF%E7%94%A8OpenOCD%E7%83%A7%E5%86%99STM32%E5%8D%95%E7%89%87%E6%9C%BA%E5%9B%BA%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在ARM板上使用OpenOCD烧写STM32单片机固件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/18/Linux%E4%B8%8B%E4%B8%B2%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux下串口的使用方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/19/%E9%93%9C%E7%AE%94%E5%8E%9A%E5%BA%A6%E5%92%8C%E7%BA%BF%E5%AE%BD%E4%B8%8E%E6%9C%80%E5%A4%A7%E8%B4%9F%E8%BD%BD%E7%94%B5%E6%B5%81%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/">铜箔厚度和线宽与最大负载电流之间的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/%E5%B8%B8%E7%94%A8I2C%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9C%B0%E5%9D%80/">常用I2C设备的地址</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/%E5%9C%A8ARM%E6%9D%BF%E4%B8%8A%E4%BD%BF%E7%94%A8OpenOCD%E7%83%A7%E5%86%99STM32%E5%8D%95%E7%89%87%E6%9C%BA%E5%9B%BA%E4%BB%B6/">在ARM板上使用OpenOCD烧写STM32单片机固件</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/18/Linux%E4%B8%8BCC%20Tool%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">Linux下CC Tool的安装和使用方法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/18/Linux%E4%B8%8B%E4%B8%B2%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">Linux下串口的使用方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 chyA<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
