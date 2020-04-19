@@ -63,6 +63,96 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PCB layout规则和技巧汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/19/PCB%20layout%E8%A7%84%E5%88%99%E5%92%8C%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="article-date">
+  <time datetime="2020-04-19T13:15:23.340Z" itemprop="datePublished">2020-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/19/PCB%20layout%E8%A7%84%E5%88%99%E5%92%8C%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/">PCB layout规则和技巧汇总</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="千兆以太网PHY到RJ45"><a href="#千兆以太网PHY到RJ45" class="headerlink" title="千兆以太网PHY到RJ45"></a>千兆以太网PHY到RJ45</h4><ul>
+<li>差分线间的长度误差 &lt; 400mils</li>
+<li>PHY到RJ45最大走线长度: 5inch(5000mils)</li>
+<li>差分对之间走线长度误差要求不严格</li>
+<li>50单端欧姆阻抗, 100欧姆差分阻抗</li>
+</ul>
+<h4 id="allegro技巧"><a href="#allegro技巧" class="headerlink" title="allegro技巧"></a>allegro技巧</h4><ul>
+<li>由于转换误差，转换单位后，孔距可能会偏移。多个并排的孔距偏移将会累加明显。增加钻孔位置的有效数字的位数即可解决问题（减少累计误差）。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hackingpi.com/2020/04/19/PCB%20layout%E8%A7%84%E5%88%99%E5%92%8C%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" data-id="ck973hbda0000pcl02h4udpo2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-关于电子产品热设计的经验" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/19/%E5%85%B3%E4%BA%8E%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81%E7%83%AD%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BB%8F%E9%AA%8C/" class="article-date">
+  <time datetime="2020-04-19T13:05:42.314Z" itemprop="datePublished">2020-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/19/%E5%85%B3%E4%BA%8E%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81%E7%83%AD%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BB%8F%E9%AA%8C/">关于电子产品热设计的经验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="基本原则"><a href="#基本原则" class="headerlink" title="基本原则"></a>基本原则</h4><ul>
+<li>尽量降低接触面的热阻</li>
+<li>减量减少热阻大的路径的长度，以减少整个散热路径的热阻</li>
+<li>提高电源效率</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2020/04/19/%E5%85%B3%E4%BA%8E%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81%E7%83%AD%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BB%8F%E9%AA%8C/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hackingpi.com/2020/04/19/%E5%85%B3%E4%BA%8E%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81%E7%83%AD%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BB%8F%E9%AA%8C/" data-id="ck973hbdi0001pcl01py9ezji" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-铜箔厚度和线宽与最大负载电流之间的关系" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/19/%E9%93%9C%E7%AE%94%E5%8E%9A%E5%BA%A6%E5%92%8C%E7%BA%BF%E5%AE%BD%E4%B8%8E%E6%9C%80%E5%A4%A7%E8%B4%9F%E8%BD%BD%E7%94%B5%E6%B5%81%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/" class="article-date">
@@ -391,6 +481,14 @@
       <ul>
         
           <li>
+            <a href="/2020/04/19/PCB%20layout%E8%A7%84%E5%88%99%E5%92%8C%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/">PCB layout规则和技巧汇总</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/%E5%85%B3%E4%BA%8E%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81%E7%83%AD%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BB%8F%E9%AA%8C/">关于电子产品热设计的经验</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/19/%E9%93%9C%E7%AE%94%E5%8E%9A%E5%BA%A6%E5%92%8C%E7%BA%BF%E5%AE%BD%E4%B8%8E%E6%9C%80%E5%A4%A7%E8%B4%9F%E8%BD%BD%E7%94%B5%E6%B5%81%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/">铜箔厚度和线宽与最大负载电流之间的关系</a>
           </li>
         
@@ -400,14 +498,6 @@
         
           <li>
             <a href="/2020/04/19/%E5%9C%A8ARM%E6%9D%BF%E4%B8%8A%E4%BD%BF%E7%94%A8OpenOCD%E7%83%A7%E5%86%99STM32%E5%8D%95%E7%89%87%E6%9C%BA%E5%9B%BA%E4%BB%B6/">在ARM板上使用OpenOCD烧写STM32单片机固件</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/18/Linux%E4%B8%8BCC%20Tool%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">Linux下CC Tool的安装和使用方法</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/18/Linux%E4%B8%8B%E4%B8%B2%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">Linux下串口的使用方法</a>
           </li>
         
       </ul>
