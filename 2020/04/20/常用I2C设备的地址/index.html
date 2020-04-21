@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>常用I2C设备的地址 | Hacking Pi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="避免同一总线上地址冲突, 持续更新。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用I2C设备的地址">
+<meta property="og:url" content="https://hackingpi.com/2020/04/20/%E5%B8%B8%E7%94%A8I2C%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9C%B0%E5%9D%80/index.html">
+<meta property="og:site_name" content="Hacking Pi">
+<meta property="og:description" content="避免同一总线上地址冲突, 持续更新。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-20T01:56:43.561Z">
+<meta property="article:modified_time" content="2020-04-18T17:07:35.000Z">
+<meta property="article:author" content="chyA, hackingpi@outlook.com">
+<meta property="article:tag" content="Maker">
+<meta property="article:tag" content="electronic">
+<meta property="article:tag" content="technology">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hacking Pi" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hacking Pi</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hackingpi.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-常用I2C设备的地址" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/20/%E5%B8%B8%E7%94%A8I2C%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9C%B0%E5%9D%80/" class="article-date">
+  <time datetime="2020-04-20T01:56:43.561Z" itemprop="datePublished">2020-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常用I2C设备的地址
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>避免同一总线上地址冲突, 持续更新。</p>
+<a id="more"></a>
+
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>名称</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PCA9536</td>
+<td>4bits I2C GPIO</td>
+<td>0x82/0x83</td>
+</tr>
+<tr>
+<td>OV5640</td>
+<td>OV CMOS Sensor</td>
+<td>0x60/0x61</td>
+</tr>
+<tr>
+<td>OV8825</td>
+<td>OV CMOS Sensor</td>
+<td>0x6C/0x6D</td>
+</tr>
+<tr>
+<td>ES8316</td>
+<td>audio codec</td>
+<td>0x22/0x23</td>
+</tr>
+<tr>
+<td>BU9873</td>
+<td>RTC</td>
+<td>0x64/0x65</td>
+</tr>
+<tr>
+<td>24AA025E48</td>
+<td>Serial EEPROMs with EUI-48™ Node Identity</td>
+<td>0xA0/0xA1</td>
+</tr>
+<tr>
+<td>EEPROM</td>
+<td>Standard EEPROM</td>
+<td>0xA0~0xAF</td>
+</tr>
+<tr>
+<td>ATSHA204A</td>
+<td>Secure authentication and validation device</td>
+<td>0xC8/0xC9</td>
+</tr>
+<tr>
+<td>PCF8591</td>
+<td>8-bit A/D and D/A converter</td>
+<td>0x90~0x9F</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hackingpi.com/2020/04/20/%E5%B8%B8%E7%94%A8I2C%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9C%B0%E5%9D%80/" data-id="ck999q6000007xci8gxiw0yzu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/20/PCB%20layout%E8%A7%84%E5%88%99%E5%92%8C%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PCB layout规则和技巧汇总
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/20/FriendlyARM%E4%B8%80%E7%BA%BF%E5%8D%8F%E8%AE%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">FriendlyARM一线协议</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/21/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%A6%82%E4%BD%95%E8%B0%83%E8%AF%95%E7%A1%AC%E4%BB%B6/">软件工程师如何调试硬件</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/21/%E6%B5%85%E8%B0%88%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90/">浅谈嵌入式硬件资源</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/20/Linux%E4%B8%8B%E4%B8%B2%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">Linux下串口的使用方法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/20/%E9%93%9C%E7%AE%94%E5%8E%9A%E5%BA%A6%E5%92%8C%E7%BA%BF%E5%AE%BD%E4%B8%8E%E6%9C%80%E5%A4%A7%E8%B4%9F%E8%BD%BD%E7%94%B5%E6%B5%81%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/">铜箔厚度和线宽与最大负载电流之间的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/20/Linux%E4%B8%8BCC%20Tool%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">Linux下CC Tool的安装和使用方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 chyA, hackingpi@outlook.com<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
